@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { WrapperBuilder } from "@redstone-finance/evm-connector";
 import { getSignersForDataServiceId } from "@redstone-finance/sdk";
 import { ethers } from "ethers";
@@ -18,7 +18,7 @@ export const PriceDisplay = ({ symbol }: PriceDisplayProps) => {
 
   const { data: deployedContractData } = useDeployedContractInfo("PriceFeed");
 
-  const fetchPrice = async () => {
+  const fetchPrice = useCallback(async () => {
     if (!deployedContractData) {
       setError("PriceFeed contract not deployed. Run: yarn deploy");
       setIsLoading(false);
@@ -43,8 +43,10 @@ export const PriceDisplay = ({ symbol }: PriceDisplayProps) => {
 
       // Wrap contract with RedStone data using correct API
       const wrappedContract = WrapperBuilder.wrap(contract).usingDataService({
+        dataServiceId: "redstone-main-demo",
         dataPackagesIds: [symbol],
         authorizedSigners: getSignersForDataServiceId("redstone-main-demo"),
+        uniqueSignersCount: 1, // Required for demo service
       });
 
       // Call the appropriate price function
@@ -64,14 +66,14 @@ export const PriceDisplay = ({ symbol }: PriceDisplayProps) => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [deployedContractData, symbol]);
 
   useEffect(() => {
     fetchPrice();
     // Refresh every 30 seconds
     const interval = setInterval(fetchPrice, 30000);
     return () => clearInterval(interval);
-  }, [deployedContractData, symbol]);
+  }, [fetchPrice]);
 
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
