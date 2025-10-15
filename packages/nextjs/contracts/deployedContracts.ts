@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   4202: {
     BuyMeACoffee: {
-      address: "0xb59323BB7E090F068e0e11034De8f816925E283E",
+      address: "0x1c2DeC5fd1d1EF95C50E9eD55e1C50754Bc2aE16",
       abi: [
         {
           inputs: [],
@@ -286,7 +286,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     MyNFT: {
-      address: "0xe76808BBc4271C3D7BD6bC9873998D2099dB3edA",
+      address: "0x01519399D048971485B6e15143be02c547766B20",
       abi: [
         {
           inputs: [],
@@ -666,7 +666,7 @@ const deployedContracts = {
       },
     },
     MyToken: {
-      address: "0x77808b04099A9b652C51985702F81197110727d5",
+      address: "0xDE1FF32096a4cE1020f81137658A5E06b0146606",
       abi: [
         {
           inputs: [],
@@ -959,7 +959,7 @@ const deployedContracts = {
       },
     },
     PriceFeed: {
-      address: "0x2f11dD9A7962e7646dcdE7714605882d46687423",
+      address: "0xfC57a54c9a079022C8f7Fa15f248Cc7D23c822a7",
       abi: [
         {
           inputs: [],
