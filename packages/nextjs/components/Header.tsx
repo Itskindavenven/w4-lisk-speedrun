@@ -4,7 +4,7 @@ import React, { useCallback, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "./Logo";
-import { Bars3Icon, BugAntIcon, HomeIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, BugAntIcon, CalendarIcon, CubeIcon, HomeIcon, CurrencyDollarIcon, SparklesIcon } from "@heroicons/react/24/outline";
 import {
   DappConsoleButton,
   FaucetButton,
@@ -27,8 +27,19 @@ export const menuLinks: HeaderMenuLink[] = [
     icon: <HomeIcon className="h-4 w-4" />,
   },
   {
+    label: "Oracle",
+    href: "/oracle",
+    icon: <CurrencyDollarIcon className="h-4 w-4" />,
+  },
+  {
+    label: "Gasless",
+    href: "/gasless",
+    icon: <SparklesIcon className="h-4 w-4" />,
+  },
+  {
     label: "Events",
     href: "/events",
+    icon: <CalendarIcon className="h-4 w-4" />,
   },
   {
     label: "Debug Contracts",
@@ -38,6 +49,7 @@ export const menuLinks: HeaderMenuLink[] = [
   {
     label: "Block Explorer",
     href: "/blockexplorer",
+    icon: <CubeIcon className="h-4 w-4" />,
   },
 ];
 
@@ -106,7 +118,6 @@ export const Header = () => {
           )}
         </div>
 
-        {/* Logo */}
         <Link href="/" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0">
           <div className="flex relative">
             <Logo size={24} />
@@ -116,13 +127,13 @@ export const Header = () => {
             <span className="text-xs">Ethereum dev stack</span>
           </div>
         </Link>
-      </div>
 
-      {/* ✅ Added navbar-center with horizontal menu */}
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <HeaderMenuLinks />
-        </ul>
+        {/* ✅ Navigation section with Events link */}
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-1">
+            <HeaderMenuLinks />
+          </ul>
+        </div>
       </div>
 
       <div className="navbar-end flex-grow mr-4">
